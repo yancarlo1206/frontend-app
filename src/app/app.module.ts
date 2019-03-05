@@ -11,13 +11,17 @@ import { /*HTTP_INTERCEPTORS, */HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from "./core/core.module";
+import { HomeComponent } from './home/home.component';
+
+import { AuthGuardService } from './core/_guards/auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { CoreModule } from "./core/core.module";
     FormsModule,
     CoreModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
