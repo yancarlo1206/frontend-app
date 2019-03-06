@@ -12,6 +12,11 @@ export class RoleGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     // this will be passed from the route config
     // on the data property
+
+    if(!this.storageService.getCurrentToken()){
+      return false;
+    }
+    
     const expectedRole = route.data.expectedRole;
     const token = this.storageService.getCurrentToken();
     // decode the token to get its payload

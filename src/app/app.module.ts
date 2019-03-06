@@ -9,13 +9,16 @@ import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
 
-import { /*HTTP_INTERCEPTORS, */HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from "./core/core.module";
 
 import { AuthGuardService } from './core/_guards/auth-guard.service';
 import { RoleGuardService } from './core/_guards/role-guard.service';
+import {AuthInterceptor} from "./core/_interceptor/auth.interceptor";
+
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -32,9 +35,18 @@ import { RoleGuardService } from './core/_guards/role-guard.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    NgxPermissionsModule.forRoot()
   ],
-  providers: [AuthGuardService, RoleGuardService],
+  providers: [
+    AuthGuardService, 
+    RoleGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

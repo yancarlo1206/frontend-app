@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../core/_models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthService } from '../login/login.service';
+import { LoginService } from '../login/login.service';
 
 //import Swal from 'sweetalert2';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   private user: User = new User();
 
-  constructor( private authService: AuthService) { }
+  constructor( private loginService: LoginService) { }
 
   Login(){
     //swal("prueba", "prueba", "success");
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       confirmButtonText: 'Cool'
     });*/
     console.log(" Estas logueandote ");
-    this.authService.login(this.user.usuario, this.user.clave);
+    this.loginService.login(this.user.usuario, this.user.clave);
   }
 
   ngOnInit() {

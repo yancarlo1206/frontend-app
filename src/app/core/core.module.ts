@@ -4,6 +4,8 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 //import {BaseRequestOptions} from "@angular/http";
 import {StorageService} from "./_services/storage.service";
 import {AuthorityService} from "./_services/authority.service";
+import {PermissionService} from "./_services/permission.service";
+//import {AuthInterceptor} from "./_interceptor/auth.interceptor";
 //import {AuthorizatedGuard} from "./guards/authorizated.guard";
 
 @NgModule({
@@ -11,7 +13,9 @@ import {AuthorityService} from "./_services/authority.service";
   imports: [],
   providers: [
     StorageService,
-    AuthorityService
+    AuthorityService,
+    PermissionService,
+    //AuthInterceptor
     //AuthorizatedGuard,
     //fakeBackendProvider,
     //MockBackend,
