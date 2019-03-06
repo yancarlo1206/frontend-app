@@ -16,6 +16,7 @@ export class StorageService {
 
   setCurrentSession(session: Session): void {
     this.currentSession = session;
+    console.log(JSON.stringify(session));
     this.localStorageService.setItem('currentUser', JSON.stringify(session));
   }
 
@@ -44,7 +45,7 @@ export class StorageService {
 
   getCurrentToken(): string {
     var session = this.getCurrentSession();
-    return (session && session.auth_token) ? session.auth_token : null;
+    return (session && session.token) ? session.token : null;
   };
 
   logout(): void{

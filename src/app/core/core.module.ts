@@ -3,6 +3,7 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 //import {MockBackend} from "@angular/http/testing";
 //import {BaseRequestOptions} from "@angular/http";
 import {StorageService} from "./_services/storage.service";
+import {AuthorityService} from "./_services/authority.service";
 //import {AuthorizatedGuard} from "./guards/authorizated.guard";
 
 @NgModule({
@@ -10,6 +11,7 @@ import {StorageService} from "./_services/storage.service";
   imports: [],
   providers: [
     StorageService,
+    AuthorityService
     //AuthorizatedGuard,
     //fakeBackendProvider,
     //MockBackend,
