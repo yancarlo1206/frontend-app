@@ -20,4 +20,12 @@ export class UsuarioService {
     );
   }
 
+  create(usuario: User): Observable<User> {
+  	return this.http.post<User>(this.urlEndPoint, usuario, {headers: this.httpHeaders});
+  }
+
+  delete(usuarioId: string): Observable<any> {
+    return this.http.delete(`${this.urlEndPoint}/${usuarioId}`, { responseType: 'text' });
+  }
+
 }

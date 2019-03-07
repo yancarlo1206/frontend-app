@@ -3,8 +3,8 @@
   <div class="card-body">
      <ng-template ngxPermissionsOnly="ROLE_OTRO">
 			<div class="my-2 text-left">
-		      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/formulario']">
-		        Registrar Usuario
+		      <button class="btn btn-rounded btn-primary" type="button" (click)="logout()">
+		        Cerrar Sesion
 		      </button>
 	    	</div>
     	</ng-template>    

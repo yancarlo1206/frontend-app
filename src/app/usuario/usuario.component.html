@@ -1,7 +1,7 @@
 <div class="card mt-3">
 	<div class="card-header">Lista Usuarios</div>
 	<div class="card-body">
-		<ng-template ngxPermissionsOnly="ROLE_OTRO">
+		<ng-template ngxPermissionsOnly="ROLE_ADMIN">
 			<div class="my-2 text-left">
 		      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/formulario']">
 		        Registrar Usuario
@@ -23,7 +23,9 @@
 		        <td>{{u.nombre}}</td>
 		        <td>{{u.email}}</td>
 		        <td>
-		           
+		           	<ng-template ngxPermissionsOnly="ROLE_ADMIN">
+		           	  <button class="btn btn-rounded btn-danger" (click)='delete(u.usuario)'>Borrar</button>
+			        </ng-template>
 		        </td>
 		      </tr>
 		    </tbody>

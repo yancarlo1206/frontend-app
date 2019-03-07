@@ -3,10 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { FormularioComponent } from './usuario/formulario.component';
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuardService as AuthGuard } from './core/_guards/auth-guard.service';
 import { RoleGuardService } from './core/_guards/role-guard.service';
+import { NoAuthGuardService as NoAuthGuard } from './core/_guards/no-auth-guard.service';
+
 
 const routes: Routes = [
 	{path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -18,7 +21,8 @@ const routes: Routes = [
         		expectedRole: 'ROLE_OTRO'
       		}
 	},
-	{path: 'login', component: LoginComponent}
+	{path: 'login', component: LoginComponent, canActivate : [NoAuthGuard]},
+	{path: 'usuarios/formulario', component: FormularioComponent }
 ];
 
 @NgModule({

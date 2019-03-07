@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   private user: User = new User();
 
-  constructor( private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   Login(){
     //swal("prueba", "prueba", "success");
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     });*/
     console.log(" Estas logueandote ");
     this.loginService.login(this.user.usuario, this.user.clave);
+    //this.router.navigate(['/home']);
   }
 
   ngOnInit() {

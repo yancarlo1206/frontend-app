@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Router } from '@angular/router';
-import {Session} from "../_models/session.model";
-import {User} from "../_models/user.model";
+import { Session } from "../_models/session.model";
+import { User } from "../_models/user.model";
+
+import { DownloadPermission } from "./downloadPermission.service";
 
 @Injectable()
 export class StorageService {
@@ -9,7 +11,7 @@ export class StorageService {
   private localStorageService;
   private currentSession : Session = null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private downloadPermission: DownloadPermission) {
     this.localStorageService = localStorage;
     this.currentSession = this.loadSessionData();
   }
@@ -32,6 +34,7 @@ export class StorageService {
   removeCurrentSession(): void {
     this.localStorageService.removeItem('currentUser');
     this.currentSession = null;
+    this.downloadPermission.downloadPermission();
   }
 
   getCurrentUser(): User {

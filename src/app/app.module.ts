@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { FormularioComponent } from './usuario/formulario.component';
 import { LoginComponent } from './login/login.component';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -15,8 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule } from "./core/core.module";
 
 import { AuthGuardService } from './core/_guards/auth-guard.service';
+import { NoAuthGuardService } from './core/_guards/no-auth-guard.service';
 import { RoleGuardService } from './core/_guards/role-guard.service';
-import {AuthInterceptor} from "./core/_interceptor/auth.interceptor";
+import { AuthInterceptor } from "./core/_interceptor/auth.interceptor";
 
 import { NgxPermissionsModule } from 'ngx-permissions';
 
@@ -28,7 +30,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
   providers: [
     AuthGuardService, 
     RoleGuardService,
+    NoAuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
