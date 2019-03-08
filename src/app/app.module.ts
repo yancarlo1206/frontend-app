@@ -13,12 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
-import { CoreModule } from "./core/core.module";
-
-import { AuthGuardService } from './core/_guards/auth-guard.service';
-import { NoAuthGuardService } from './core/_guards/no-auth-guard.service';
-import { RoleGuardService } from './core/_guards/role-guard.service';
-import { AuthInterceptor } from "./core/_interceptor/auth.interceptor";
+import { CoreModule, AuthInterceptor } from "./core/";
 
 import { NgxPermissionsModule } from 'ngx-permissions';
 
@@ -42,9 +37,6 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     NgxPermissionsModule.forRoot()
   ],
   providers: [
-    AuthGuardService, 
-    RoleGuardService,
-    NoAuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -1,13 +1,13 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
-//import {fakeBackendProvider} from "./helper/fake-backend";
-//import {MockBackend} from "@angular/http/testing";
-//import {BaseRequestOptions} from "@angular/http";
+
 import {StorageService} from "./_services/storage.service";
 import {AuthorityService} from "./_services/authority.service";
 import {PermissionService} from "./_services/permission.service";
 import { DownloadPermission } from "./_services/downloadPermission.service";
-//import {AuthInterceptor} from "./_interceptor/auth.interceptor";
-//import {AuthorizatedGuard} from "./guards/authorizated.guard";
+
+import { AuthGuardService } from './_guards/auth-guard.service';
+import { NoAuthGuardService } from './_guards/no-auth-guard.service';
+import { RoleGuardService } from './_guards/role-guard.service';
 
 @NgModule({
   declarations: [  ],
@@ -16,12 +16,10 @@ import { DownloadPermission } from "./_services/downloadPermission.service";
     StorageService,
     AuthorityService,
     PermissionService,
-    DownloadPermission
-    //AuthInterceptor
-    //AuthorizatedGuard,
-    //fakeBackendProvider,
-    //MockBackend,
-    //BaseRequestOptions
+    DownloadPermission,
+    AuthGuardService, 
+    RoleGuardService,
+    NoAuthGuardService
   ],
   bootstrap: []
 })
