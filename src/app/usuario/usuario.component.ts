@@ -32,14 +32,16 @@ export class UsuarioComponent implements OnInit {
       if (result.value) {
         this.usuarioService.delete(usuarioId)
           .subscribe(usuario => {
+              Swal.fire(
+                'Borrado!',
+                'El registro ha sido borrado.',
+                'success'
+              )
               this.router.navigate(['/home']);
+              //this.router.navigate(['/usuario']);
             }
           );
-        Swal.fire(
-          'Borrado!',
-          'El registro ha sido borrado.',
-          'success'
-        )
+        
       }
     })
 

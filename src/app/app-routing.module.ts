@@ -16,14 +16,16 @@ const routes: Routes = [
 			canActivate: [RoleGuardService],
       		data: {
         		expectedRole: 'ROLE_OTRO'
-      		}
+      		},
+      		runGuardsAndResolvers: 'always'
 	},
 	{path: 'login', component: LoginComponent, canActivate : [NoAuthGuard]},
-	{path: 'usuarios/formulario', component: FormularioComponent }
+	{path: 'usuarios/formulario', component: FormularioComponent },
+	{path: 'usuarios/formulario/:id', component: FormularioComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

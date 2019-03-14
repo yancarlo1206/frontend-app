@@ -23,6 +23,10 @@
 		        <td>{{u.nombre}}</td>
 		        <td>{{u.email}}</td>
 		        <td>
+		        	<ng-template ngxPermissionsOnly="ROLE_ADMIN">
+		           	  <button class="btn btn-rounded btn-warning"
+		           	  [routerLink]="['/usuarios/formulario', u.usuario]" >Editar</button>
+			        </ng-template>
 		           	<ng-template ngxPermissionsOnly="ROLE_ADMIN">
 		           	  <button class="btn btn-rounded btn-danger" (click)='delete(u.usuario)'>Borrar</button>
 			        </ng-template>
