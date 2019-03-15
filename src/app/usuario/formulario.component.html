@@ -23,7 +23,11 @@
         <input type="text" class="form-control" [(ngModel)]="usuario.clave" name="clave">
       </div>
 
-      <button type="submit" class="btn btn-primary" role="button" (click)='create()'>Crear Usuario</button>
+      <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!usuario.usuario else elseBlock">Crear Usuario</button>
+
+      <ng-template #elseBlock>
+        <button class="btn btn-primary" role="button" (click)='update()' >Actualizar Usuario</button>
+      </ng-template>        
 
     </form>
 

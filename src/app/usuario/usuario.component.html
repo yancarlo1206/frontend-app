@@ -28,7 +28,7 @@
 		           	  [routerLink]="['/usuarios/formulario', u.usuario]" >Editar</button>
 			        </ng-template>
 		           	<ng-template ngxPermissionsOnly="ROLE_ADMIN">
-		           	  <button class="btn btn-rounded btn-danger" (click)='delete(u.usuario)'>Borrar</button>
+		           	  <button class="btn btn-rounded btn-danger" (click)='delete(u)'>Borrar</button>
 			        </ng-template>
 		        </td>
 		      </tr>

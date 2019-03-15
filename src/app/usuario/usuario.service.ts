@@ -15,9 +15,10 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   getUsuarios(): Observable<User[]> {
-    return this.http.get(this.urlEndPoint).pipe (
+    /*return this.http.get(this.urlEndPoint).pipe (
       map( (response) => response as User[] )
-    );
+    );*/
+    return this.http.get<User[]>(this.urlEndPoint);
   }
 
   create(usuario: User): Observable<User> {
@@ -28,8 +29,12 @@ export class UsuarioService {
     return this.http.get<User>(`${this.urlEndPoint}/${id}`);
   }
 
-  delete(usuarioId: string): Observable<any> {
-    return this.http.delete(`${this.urlEndPoint}/${usuarioId}`, { responseType: 'text' });
+  update (usuario: User): Observable<User>{
+    return this.http.put<User>(`${this.urlEndPoint}/${usuario.usuario}`, usuario, {headers: this.httpHeaders});
+  }
+
+  delete(id: string): Observable<User> {
+    return this.http.delete<User>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders});
   }
 
 }

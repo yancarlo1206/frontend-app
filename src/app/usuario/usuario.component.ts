@@ -18,8 +18,7 @@ export class UsuarioComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService,  private router: Router, private loadPermissionService: LoadPermissionService) { }
 
-  delete(usuarioId: string): void {
-
+  delete(usuario: User): void {
     Swal.fire({
       title: 'Estás seguro?',
       text: "No podras revertir el proceso!",
@@ -30,15 +29,14 @@ export class UsuarioComponent implements OnInit {
       confirmButtonText: 'Si, borra el registro'
     }).then((result) => {
       if (result.value) {
-        this.usuarioService.delete(usuarioId)
-          .subscribe(usuario => {
+        this.usuarioService.delete(usuario.usuario)
+          .subscribe(response => {
+              this.usuario = this.usuario.filter(cli => cli != usuario)
               Swal.fire(
                 'Borrado!',
                 'El registro ha sido borrado.',
                 'success'
               )
-              this.router.navigate(['/home']);
-              //this.router.navigate(['/usuario']);
             }
           );
         
@@ -50,7 +48,7 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {
     this.loadPermissionService.loadPermission();
     this.usuarioService.getUsuarios().subscribe(
-    (usuarios) => {this.usuario = usuarios}
+    (usuario) => {this.usuario = usuario}
   );
   }
 

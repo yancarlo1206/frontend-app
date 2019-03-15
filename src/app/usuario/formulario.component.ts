@@ -24,7 +24,7 @@ export class FormularioComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       if(id){
-        this.usuarioService.getUsuario(id).subscribe( (cliente) => this.cliente = cliente )
+        this.usuarioService.getUsuario(id).subscribe( (usuario) => this.usuario = usuario )
       }
     })
   }
@@ -37,7 +37,14 @@ export class FormularioComponent implements OnInit {
       //swal('Nuevo Cliente', `Cliente ${usuario.nombre} creado con éxito!`, 'success');
       }
     );
+  }
 
+  update(): void {
+    this.usuarioService.update(this.usuario)
+    .subscribe(usuario => {
+      this.router.navigate(['/usuario']);
+      Swal.fire('Registro Actualizado', `Cliente ${usuario.usuario} actualizado con éxito!`);
+    }) 
   }
 
 
