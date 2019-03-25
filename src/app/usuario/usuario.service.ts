@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private urlEndPoint:string = 'http://localhost:8080/api/usuarios';
+  private urlEndPoint:string = 'http://localhost:8080/usuario';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }

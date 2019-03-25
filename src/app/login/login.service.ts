@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  uri = 'http://localhost:8080/api';
+  uri = 'http://localhost:8080';
 
   constructor(
     private http: HttpClient, private router: Router, private loadPermissionService: LoadPermissionService,
