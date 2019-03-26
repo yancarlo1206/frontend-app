@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule, AuthInterceptor } from "./core/";
 
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     HttpClientModule,
     FormsModule,
     CoreModule,
-    NgxPermissionsModule.forRoot()
+    NgxPermissionsModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     {
