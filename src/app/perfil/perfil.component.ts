@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../core/_models/user.model';
-import { UsuarioService } from './usuario.service';
+import { Perfil } from '../core/_models/perfil.model';
+import { PerfilService } from './perfil.service';
 import { Router } from '@angular/router';
 
 import Swal from 'sweetalert2';
@@ -8,17 +8,17 @@ import Swal from 'sweetalert2';
 import { LoadPermissionService } from "../core/_services/loadPermission.service";
 
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.css']
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
+  styleUrls: ['./perfil.component.css']
 })
-export class UsuarioComponent implements OnInit {
+export class PerfilComponent implements OnInit {
 
-  usuario: User[];
+  perfil: Perfil[];
 
-  constructor(private usuarioService: UsuarioService,  private router: Router, private loadPermissionService: LoadPermissionService) { }
+  constructor(private perfilService: PerfilService,  private router: Router, private loadPermissionService: LoadPermissionService) { }
 
-  delete(usuario: User): void {
+  delete(perfil: Perfil): void {
     Swal.fire({
       title: 'Estás seguro?',
       text: "No podras revertir el proceso!",
@@ -29,9 +29,9 @@ export class UsuarioComponent implements OnInit {
       confirmButtonText: 'Si, borra el registro'
     }).then((result) => {
       if (result.value) {
-        this.usuarioService.delete(usuario.usuario)
+        this.perfilService.delete(perfil.id)
           .subscribe(response => {
-              this.usuario = this.usuario.filter(cli => cli != usuario)
+              this.perfil = this.perfil.filter(cli => cli != perfil)
               Swal.fire(
                 'Borrado!',
                 'El registro ha sido borrado.',
@@ -47,9 +47,9 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
     this.loadPermissionService.loadPermission();
-    this.usuarioService.getUsuarios().subscribe(
-      (usuario) => {this.usuario = usuario}
-    );
+    this.perfilService.getPerfiles().subscribe(
+    (perfil) => {this.perfil = perfil}
+  );
   }
 
 }

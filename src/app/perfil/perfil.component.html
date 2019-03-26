@@ -1,35 +1,27 @@
 <div class="card mt-3">
-	<div class="card-header">Lista Usuarios</div>
+	<div class="card-header">Lista Perfiles</div>
 	<div class="card-body">
 		<ng-template ngxPermissionsOnly="ROLE_ADMIN">
 			<div class="my-2 text-left">
-		      <button class="btn btn-rounded btn-success" type="button" [routerLink]="['/usuarios/formulario']">
-		        Registrar Usuario
+		      <button class="btn btn-rounded btn-success" type="button" [routerLink]="['/perfil/form']">
+		        Registrar Perfil
 		      </button>
 	    	</div>
     	</ng-template>
 		<table class="table table-bordered">
 		    <thead>
 		      <tr>
-		        <th scope="col">Usuario</th>
-		        <th scope="col">Nombre</th>
-		        <th scope="col">Email</th>
+		        <th scope="col">Descricpion</th>
 		        <th scope="col" class="acciones">Acciones</th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		      <tr  scope="row" *ngFor="let u of usuario">
-		        <td>{{u.usuario}}</td>
-		        <td>{{u.nombre}}</td>
-		        <td>{{u.email}}</td>
+		      <tr  scope="row" *ngFor="let u of perfil">
+		        <td>{{u.descripcion}}</td>
 		        <td class="acciones">
 		        	<ng-template ngxPermissionsOnly="ROLE_ADMIN">
 		           	  <button type="button" class="btn btn-sm btn-primary"
-		           	  [routerLink]="['/usuarios/formulario', u.usuario]" >Editar</button>
-			        </ng-template>
-			        <ng-template ngxPermissionsOnly="ROLE_ADMIN">
-		           	  <button type="button" class="btn btn-sm btn-warning"
-		           	  [routerLink]="['/usuarios/usuariorol', u.usuario]" >Roles</button>
+		           	  [routerLink]="['/perfil/form', u.id]" >Editar</button>
 			        </ng-template>
 		           	<ng-template ngxPermissionsOnly="ROLE_ADMIN">
 		           	  <button type="button" class="btn btn-sm btn-danger" (click)='delete(u)'>Borrar</button>

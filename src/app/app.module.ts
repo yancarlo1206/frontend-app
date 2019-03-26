@@ -9,9 +9,13 @@ import { HomeComponent } from './home/home.component';
 
 import { UsuarioComponent } from './usuario/usuario.component';
 import { FormularioComponent } from './usuario/formulario.component';
+import { FormUsuarioRolComponent } from './usuario/formUsuarioRol.component';
 
 import { RolComponent } from './rol/rol.component';
 import { FormRolComponent } from './rol/formRol.component';
+
+import { PerfilComponent } from './perfil/perfil.component';
+import { FormPerfilComponent } from './perfil/formPerfil.component';
 
 import { LoginComponent } from './login/login.component';
 
@@ -21,7 +25,6 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule, AuthInterceptor } from "./core/";
 
 import { NgxPermissionsModule } from 'ngx-permissions';
-
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     UsuarioComponent,
     FormularioComponent,
     RolComponent,
-    FormRolComponent
+    FormRolComponent,
+    PerfilComponent,
+    FormPerfilComponent,
+    FormUsuarioRolComponent
   ],
   imports: [
     BrowserModule,

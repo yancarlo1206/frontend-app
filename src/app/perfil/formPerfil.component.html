@@ -1,0 +1,22 @@
+<div class="card mt-3">
+  <div class="card-header">Registrar Perfil</div>
+  <div class="card-body">
+    <form>
+
+      <input type="hidden" class="form-control" [(ngModel)]="perfil.id" name="id">
+      
+      <div class="form-group">
+        <label>Descripcion</label>
+        <input type="text" class="form-control" [(ngModel)]="perfil.descripcion" name="descripcion">
+      </div>
+
+      <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!perfil.id else elseBlock">Crear Perfil</button>
+
+      <ng-template #elseBlock>
+        <button class="btn btn-primary" role="button" (click)='update()' >Actualizar Perfil</button>
+      </ng-template>        
+
+    </form>
+
+  </div>
+</div>
